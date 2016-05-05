@@ -17,7 +17,8 @@ gem 'coffee-rails', '~> 4.1.0'
 gem "clearance"
 
 gem "figaro"
-
+gem 'omniauth'
+#for external service provider authentication
 gem 'omniauth-facebook'
 
 # Use jquery as the JavaScript library

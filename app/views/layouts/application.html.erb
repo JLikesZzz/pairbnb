@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Pairbnb</title>
+  <title>BB8nb</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
+  <link rel="icon" type="image/png" href="http://orig04.deviantart.net/04bb/f/2015/353/b/4/bb8_approves_by_iint-d9kp0qp.png" />
 </head>
 <body>
-
 <% if signed_in? %>
       Signed in as: <%= current_user.email %>
       <%= button_to 'Sign out', sign_out_path, method: :delete %>
