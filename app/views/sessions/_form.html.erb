@@ -13,10 +13,6 @@
     <%= form.submit %>
   </div>
 
-  <div>
-    <%= button_to 'Log in with Facebook', '/auth/facebook'%>
-  </div>
-
   <div class="other-links">
     <% if Clearance.configuration.allow_sign_up? %>
       <%= link_to t(".sign_up"), sign_up_path %>

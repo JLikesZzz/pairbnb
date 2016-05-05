@@ -1,7 +1,21 @@
 class UsersController < Clearance::UsersController
+before_action :check_current_user, only: [:edit, :update]
+before_action :custom_params, only: [:update]
 
   def edit
+   @user = User.find(params[:id])
   end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update(custom_params)
+      redirect_to '/'
+    else
+      flash[:warning] = 'Y U DO THIS'
+      render :edit
+    end
+  end
+
   def user_from_params
 
       email = user_params.delete(:email)
@@ -34,4 +48,13 @@ class UsersController < Clearance::UsersController
                                   # , :gender, :contact_number, :description, :country)
     end
 
+    def custom_params
+      params.require(:user).permit(:first_name, :last_name, :birthdate, :gender, :contact_number, :description, :country)
+    end
+
+    def check_current_user
+      unless params[:id].to_i == current_user.id
+        redirect_to '/'
+      end
+    end
 end
