@@ -1,0 +1,219 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    background-color: whitesmoke;
+}
+
+#login-dp{
+    min-width: 250px;
+    padding: 14px 14px 0;
+    overflow:hidden;
+    background-color:rgba(255,255,255,.8);
+}
+#login-dp .help-block{
+    font-size:12px
+}
+#login-dp .bottom{
+    background-color:rgba(255,255,255,.8);
+    border-top:1px solid #ddd;
+    clear:both;
+    padding:14px;
+}
+#login-dp .social-buttons{
+    margin:12px 0
+}
+#login-dp .social-buttons a{
+    width: 49%;
+}
+#login-dp .form-group {
+    margin-bottom: 10px;
+}
+.btn-fb{
+    color: #fff;
+    background-color:#3b5998;
+}
+.btn-fb:hover{
+    color: #fff;
+    background-color:#496ebc
+}
+.btn-tw{
+    color: #fff;
+    background-color:#55acee;
+}
+.btn-tw:hover{
+    color: #fff;
+    background-color:#59b5fa;
+}
+@media(max-width:768px){
+    #login-dp{
+        background-color: inherit;
+        color: #fff;
+    }
+    #login-dp .bottom{
+        background-color: inherit;
+        border-top:0 none;
+    }
+}
+
+
+
+
+#custom-bootstrap-menu.navbar-default .navbar-brand {
+    color: rgba(31, 26, 26, 1);
+}
+#custom-bootstrap-menu.navbar-default {
+    font-size: 15px;
+    background-color: rgba(255, 255, 255, 1);
+    border-width: 1px;
+    border-radius: 0px;
+}
+#custom-bootstrap-menu.navbar-default .navbar-nav>li>a {
+    color: rgba(119, 119, 119, 1);
+    background-color: rgba(255, 255, 255, 0.21);
+}
+#custom-bootstrap-menu.navbar-default .navbar-nav>li>a:hover,
+#custom-bootstrap-menu.navbar-default .navbar-nav>li>a:focus {
+    color: rgba(250, 250, 250, 1);
+    background-color: rgba(89, 181, 217, 1);
+}
+#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a,
+#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a:hover,
+#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a:focus {
+    color: rgba(85, 85, 85, 1);
+    background-color: rgba(247, 237, 237, 0);
+}
+#custom-bootstrap-menu.navbar-default .navbar-toggle {
+    border-color: #f7eded;
+}
+#custom-bootstrap-menu.navbar-default .navbar-toggle:hover,
+#custom-bootstrap-menu.navbar-default .navbar-toggle:focus {
+    background-color: #f7eded;
+}
+#custom-bootstrap-menu.navbar-default .navbar-toggle .icon-bar {
+    background-color: #f7eded;
+}
+#custom-bootstrap-menu.navbar-default .navbar-toggle:hover .icon-bar,
+#custom-bootstrap-menu.navbar-default .navbar-toggle:focus .icon-bar {
+    background-color: #ffffff;
+}
+
+
+.cover-card {
+	background: silver;
+  background-size: cover !important;
+	padding: 0px;
+	margin: 0px;
+	height:250px;
+}
+.cover-card > p {
+	position: relative;
+    text-align: center;
+	background-color: rgba(6,6,6,0.0);
+	color: rgba(6,6,6,0.0);
+	width: 100%;
+	height: 100%;
+	font-weight: bold;
+	font-size: 20px;
+}
+.col-sm-3.cover-card > p {
+    padding: 24% 2%;
+}
+.col-sm-4.cover-card > p {
+    padding: 22% 2%;
+    border: solid;
+    border-color: whitesmoke;
+    border-width: 1px;
+}
+.col-sm-6.cover-card > p {
+    padding: 14% 2%;
+    padding: 22% 2%;
+    border: solid;
+    border-color: whitesmoke;
+    border-width: 1px;
+}
+.col-sm-8.cover-card > p {
+    padding: 11% 2%;
+}
+.cover-card:hover > p {
+	background-color: rgba(6,6,6,0.3);
+	color: white;
+	text-shadow: 3px 3px 10px #000;
+  font-family: 'Josefin Sans', sans-serif;;
+}
+
+.login-or {
+  position: relative;
+  font-size: 18px;
+  color: #aaa;
+  margin-top: 10px;
+          margin-bottom: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.span-or {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: -2px;
+  margin-left: -25px;
+  background-color: #fff;
+  width: 50px;
+  text-align: center;
+}
+.hr-or {
+  background-color: #cdcdcd;
+  height: 1px;
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+}
+h3 {
+  text-align: center;
+  line-height: 300%;
+}
+
+
+img#bb8welcome {
+    width: 15%;
+}
+
+img#bb8bar {
+    width: 5%;
+}
+
+
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 280px;
+  background:
+  /* color overlay */
+    linear-gradient(
+      rgba(240, 212, 0, 0.45),
+      rgba(0, 0, 0, 0.45)
+    ),
+    /* image to overlay */
+    url(http://images.cdn.fotopedia.com/_avPIZmqM3w-7z161LH_268-hd.jpg);
+}
+
+
+/* Custom footer CSS
+-------------------------------------------------- */
+
+.container {
+  width: auto;
+  max-width: 680px;
+  padding: 0 15px;
+}
+.container .text-muted {
+  margin: 20px 0;
+}
+.footertext {
+  color: #ffffff;
+}
