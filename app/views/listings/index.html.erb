@@ -1,0 +1,13 @@
+
+<h3>My listings</h3>
+
+<%if @listings.count != 0%>
+  <%= @listings.each do |x|%>
+    <%=x.user_id%>
+    <%=x.address%>
+    <%=x.description%>
+    <%=x.home_type%>
+    <%end%>
+<%else%>
+    You do not have any listings
+<%end%>

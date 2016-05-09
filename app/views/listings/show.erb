@@ -1,0 +1,21 @@
+
+<p>Description: <%=@listing.description%></p>
+
+
+<%@host = User.find(@listing.user_id)%>
+
+<p>Host: <%=@host.first_name%> <%=@host.last_name%></p>
+
+<p>Location: <%=@listing.address%> </p>
+
+<p>State: <%=@listing.state%> </p>
+
+<p>Home Type: <%=@listing.home_type%></p>
+<p>Room Type: <%=@listing.room_type%></p>
+
+<%if current_user.id == @host.id%>
+<div class="other-links">
+  <%= link_to t("edit"), edit_listing_path(@listing)%>
+  <%= link_to t("delete"), @listing, method: :delete, data: {confirm:"Are you sure?"}%>
+</div>
+<%end%>

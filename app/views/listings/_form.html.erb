@@ -1,0 +1,50 @@
+<div class="description-field">
+  <%= form.label :description %>
+  <%= form.text_field :description %>
+</div>
+
+<div class="room_type-field">
+  <%= form.label :room_type %>
+  <%= form.select :room_type, [['Entire home/apt'], ['Private Room'], ['Shared Room']]%>
+</div>
+
+<div class="home_type-field">
+  <%= form.label :home_type %>
+  <%= form.select :home_type, [['Apartment'], ['House'], ['Bed & Breakfast'], ['Loft'], ['Condominium']] %>
+</div>
+
+<div class="address-field">
+  <%= form.label :address %>
+  <%= form.text_field :address %>
+</div>
+
+<div class="country-field">
+  <%= form.label :country %>
+  <%= form.country_select :country %>
+</div>
+
+<div class="state-field">
+  <%= form.label :state %>
+  <%= form.text_field :state%>
+</div>
+
+<div class="zip_code-field">
+  <%= form.label :zip_code %>
+  <%= form.text_field :zip_code%>
+</div>
+
+
+<div class="accommodates-field">
+  <%= form.label :accommodates %>:
+  <%= form.text_field :accommodates %>
+</div>
+
+<div class="min_stay-field">
+  <%= form.label :min_stay %> (days):
+  <%= form.text_field :min_stay %>
+</div>
+
+<div class="price-field">
+  <%= form.label :price %>
+  <%= form.text_field :price %>
+</div>
