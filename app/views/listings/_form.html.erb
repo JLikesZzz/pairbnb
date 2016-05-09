@@ -1,6 +1,16 @@
+<div class="name-field">
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+</div>
+
 <div class="description-field">
   <%= form.label :description %>
   <%= form.text_field :description %>
+</div>
+
+<div class="tag_list-field">
+  <%= form.label :tag_list, "Tag(seperated by commas)" %>
+  <%= form.text_field :tag_list %>
 </div>
 
 <div class="room_type-field">

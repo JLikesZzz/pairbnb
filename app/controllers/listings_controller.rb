@@ -2,9 +2,13 @@ class ListingsController < ApplicationController
 before_action :find_listing, only: [:show, :edit, :update, :destroy]
 
 
-  #all the listings
+  #all the listings that belongs to current_user
   def index
-    @listings = current_user.listings.all
+    if params[:tag]
+        @listings = current_user.listings.tagged_with(params[:tag])
+    else
+        @listings = current_user.listings.all
+    end
   end
 
   #just one specific listing
@@ -54,7 +58,7 @@ before_action :find_listing, only: [:show, :edit, :update, :destroy]
   private
 
   def listing_params
-    params.require(:listing).permit(:price, :description, :room_type, :home_type, :address, :country, :state, :zip_code, :accommodates, :min_stay)
+    params.require(:listing).permit(:name, :tag_list, :price, :description, :room_type, :home_type, :address, :country, :state, :zip_code, :accommodates, :min_stay)
   end
 
 

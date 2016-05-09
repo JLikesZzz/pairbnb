@@ -2,12 +2,21 @@
 <h3>My listings</h3>
 
 <%if @listings.count != 0%>
-  <%= @listings.each do |x|%>
-    <%=x.user_id%>
-    <%=x.address%>
-    <%=x.description%>
-    <%=x.home_type%>
-    <%end%>
+  <% @listings.each do |x|%>
+  <% @listing_owner = User.find(x.user_id)%>
+    <p>Name: <%=x.name%></p>
+    <p>Host: <%=@listing_owner.first_name%> <%=@listing_owner.last_name%></p>
+    <p>Address: <%=x.address%></p>
+    <p>Country: <%=x.country%></p>
+    <p>Zip Code: <%=x.zip_code%></p>
+    <p>Description: <%=x.description%></p>
+    <p>Home Type: <%=x.home_type%></p>
+    <p>Room Type: <%=x.room_type%></p>
+    <p>Accomodates: <%=x.accommodates%></p>
+    <p>Minimum stay: <%=x.min_stay%></p>
+    <p>Tags: <%=raw x.tag_list.map {|t| link_to t, tag_path(t) }.join(', ')%></p>
+    <hr>
+  <%end%>
 <%else%>
     You do not have any listings
 <%end%>

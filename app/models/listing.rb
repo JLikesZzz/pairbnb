@@ -1,4 +1,7 @@
 class Listing < ActiveRecord::Base
+
+  # attr_accessible :tag_list
+
   belongs_to :user
 
   validates :user_id, presence: true
@@ -12,6 +15,9 @@ class Listing < ActiveRecord::Base
   validates :zip_code, presence: true
   validates :accommodates, presence: true
   validates :min_stay, presence: true
+
+
+  acts_as_taggable
 
 
 end
