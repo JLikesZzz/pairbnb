@@ -1,1 +1,14 @@
 <h1> This is the profile section</h1>
+
+  <div class="avatar">
+    <img class="pic img-cricle" src="<%=@user.avatar%>" alt="profile_pic">
+  </div>
+
+<div class="profile_pic">
+    Name: <%=@user.first_name%> <%=@user.last_name%><br>
+    Gender: <%=@user.gender%> <br>
+    Birthdate: <%=@user.birthdate%><br>
+    Contact Number: <%=@user.contact_number%><br>
+    Nationality: <%=@user.country%><br>
+    Description: <%=@user.description%><br>
+</div>

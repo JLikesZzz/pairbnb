@@ -2,6 +2,13 @@
 Add more of your details
 <%= form_for @user do |form| %>
 
+  <div class="avatar-field">
+    <%= image_tag(@user.avatar_url) if @user.avatar? %>
+    <%= form.label :avatar %>
+    <%= form.file_field :avatar %>
+    <%= form.hidden_field :avatar_cache %>
+  </div>
+
   <div class="first_name-field">
     <%= form.label :first_name %>
     <%= form.text_field :first_name %>

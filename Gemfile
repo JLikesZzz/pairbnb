@@ -25,6 +25,12 @@ gem 'omniauth-facebook'
 #for tagging
 gem 'acts-as-taggable-on'
 
+#for simple and extremely flexible way to upload files from Ruby applications
+gem 'carrierwave'
+
+#ruby processes memory remains small
+gem "mini_magick"
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
