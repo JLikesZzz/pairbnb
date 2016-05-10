@@ -1,3 +1,8 @@
+
+  <% @listing.pictures.each do |picture| %>
+      <img class="cover-card col-sm-6" src="<%=picture%>" alt="listing_pic">
+  <% end %>
+
 <p><%=@listing.name%></p>
 <p>Description: <%=@listing.description%></p>
 <%@host = User.find(@listing.user_id)%>

@@ -4,6 +4,9 @@
 <%if @listings.count != 0%>
   <% @listings.each do |x|%>
   <% @listing_owner = User.find(x.user_id)%>
+  <% x.pictures.each do |picture|%>
+    <p><img class="cover-card col-sm-6" src="<%=picture%>"></p>
+  <%end%>
     <p>Name: <%=x.name%></p>
     <p>Host: <%=@listing_owner.first_name%> <%=@listing_owner.last_name%></p>
     <p>Address: <%=x.address%></p>
@@ -15,6 +18,10 @@
     <p>Accomodates: <%=x.accommodates%></p>
     <p>Minimum stay: <%=x.min_stay%></p>
     <p>Tags: <%=raw x.tag_list.map {|t| link_to t, tag_path(t) }.join(', ')%></p>
+    <div class="other-links">
+      <%= link_to t("edit"), edit_listing_path(x)%>
+      <%= link_to t("delete"), x, method: :delete, data: {confirm:"Are you sure?"}%>
+    </div>
     <hr>
   <%end%>
 <%else%>

@@ -25,11 +25,14 @@ gem 'omniauth-facebook'
 #for tagging
 gem 'acts-as-taggable-on'
 
-#for simple and extremely flexible way to upload files from Ruby applications
-gem 'carrierwave'
+#for simple and extremely flexible way to upload files from Ruby applications, allows image uploads
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 
-#ruby processes memory remains small
+#allows use to resize and crop images
 gem "mini_magick"
+
+#allows us to upload images to S3 with ease
+gem "fog"
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

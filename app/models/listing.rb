@@ -2,6 +2,8 @@ class Listing < ActiveRecord::Base
 
   # attr_accessible :tag_list
 
+  mount_uploaders :pictures, PictureUploader
+
   belongs_to :user
 
   validates :user_id, presence: true

@@ -49,6 +49,7 @@ before_action :find_listing, only: [:show, :edit, :update, :destroy]
   #delete one specific post by sending a delete request to the server
   def destroy
     @listing.destroy
+    redirect_to "/listings"
   end
 
   def find_listing
@@ -58,7 +59,7 @@ before_action :find_listing, only: [:show, :edit, :update, :destroy]
   private
 
   def listing_params
-    params.require(:listing).permit(:name, :tag_list, :price, :description, :room_type, :home_type, :address, :country, :state, :zip_code, :accommodates, :min_stay)
+    params.require(:listing).permit(:name, :tag_list, :price, :description, :room_type, :home_type, :address, :country, :state, :zip_code, :accommodates, :min_stay, {pictures: []})
   end
 
 

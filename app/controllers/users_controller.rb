@@ -1,19 +1,17 @@
 class UsersController < Clearance::UsersController
 before_action :check_current_user, only: [:edit, :update]
-before_action :custom_params, only: [:update]
-
-
-
+before_action :set_user, only: [:update]
 
   def edit
    @user = User.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
-    if @user.update(custom_params)
-      redirect_to "/users/#{@user.id}"
+    @user.update(custom_params)
+    if @user.save
+        redirect_to "/users/#{@user.id}"
     else
+      @user.errors.full_messages
       flash[:warning] = 'Y U DO THIS'
       render :edit
     end
@@ -48,6 +46,11 @@ before_action :custom_params, only: [:update]
         # user.description = description
         # user.country = country
       end
+    end
+
+  private
+    def set_user
+      @user = User.find(params[:id])
     end
 
     def permit_params
