@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   has_many :authentications, :dependent => :destroy
   has_many :listings, :dependent => :destroy
+  has_many :reservations
   validates :first_name, presence: true
 
   mount_uploader :avatar, AvatarUploader

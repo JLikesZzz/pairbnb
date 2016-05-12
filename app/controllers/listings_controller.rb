@@ -13,6 +13,7 @@ before_action :find_listing, only: [:show, :edit, :update, :destroy]
 
   #just one specific listing
   def show
+    @reservation = Reservation.new
   end
 
   #get the page that lets you create a new post

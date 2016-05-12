@@ -3,6 +3,8 @@
 <head><meta name="viewport" content="width=device-width, intial-scale=1.0">
 
 
+
+
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 
@@ -22,6 +24,17 @@
   <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Quicksand:700' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+
+
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+
+
+
+<!-- Include Required Prerequisites -->
+<script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<!-- Include Date Range Picker -->
+<script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
 
 </head>
 
@@ -48,9 +61,9 @@
 					      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Host <span class="caret"></span></a>
 					      <ul class="dropdown-menu" role="menu">
 						      <li><a href="/listings/new">Create new listing</a></li>
-						      <li><a href="#">Yardım</a></li>
+						      <li><a href="/listings">My Listings</a></li>
 						      <li class="divider"></li>
-						      <li><a href="#">Ayarlar</a></li>
+						      <li><%=link_to 'Listing Reservations', mylistings_reservations_path%></li>
 						      <li><a href="#exit">Çıkış yap</a></li>
 					      </ul>
 				      </li>
@@ -79,7 +92,7 @@
                       <li>  <%= link_to 'Sign in', sign_in_path %></li>
                     <%end%>
                     <li class="divider"></li>
-                    <li><a href="/listings">My Listings</a></li>
+                    <li><a href="/reservations">My reservation</a></li>
                     <li class="divider"></li>
                     <li><a href="#">One more separated link</a></li>
                   </ul>
@@ -99,7 +112,9 @@
 
 
 <div class='col-md-10 col-md-offset-1'>
-
+<% flash.each do |key, value|%>
+  <p class='alert alert-<%=key%>'><%= value%></p>
+<%end%>
 <%= yield %>
 <br>
 </div>

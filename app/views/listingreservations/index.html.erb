@@ -1,0 +1,20 @@
+<h3>All my list's reservations</h3>
+
+
+<%@all_listing.each do |x|%>
+  <% a = Reservation.where(listing_id: x.id)%>
+  <% a.each do |y| %>
+  <% user = User.find(y.user_id)%>
+    <p><%=x.name%></p>
+    <p><%=x.description%></p>
+    <p><%=x.address%></p>
+    <p><strong>Booked by:</strong> <%=user.first_name%> <%=user.last_name%></p>
+    <p><strong>Contact number: </strong><%= user.contact_number %></p>
+    <p><strong>Email: </strong><%= user.email %></p>
+    <p><strong>Pax: </strong><%= y.pax %></p>
+    <p><strong>Check in date: </strong><%= y.check_in_date %></p>
+    <p><strong>Check out date: </strong><%= y.check_out_date %></p>
+    <br>
+    <br>
+  <%end%>
+<%end%>

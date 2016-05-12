@@ -1,0 +1,33 @@
+<h3>My reservations</h3>
+
+<%if @reservations.count != 0%>
+  <% @reservations.each do |x|%>
+    <%if x.user_id == current_user.id%>
+
+      <% @reservation_booker = User.find(x.user_id)%>
+      <% @reservation_host = User.find(@reservation_listing.user_id)%>
+
+
+      <a href="/reservations/<%=x.id%>"><p>RESERVATION CODE: <%=x.id%></p></a>
+      <p>Name: <%=@reservation_booker.first_name%></p>
+      <p>Host: <%=@reservation_host.first_name%> <%=@reservation_host.last_name%></p>
+      <p>Address: <%=@reservation_listing.address%></p>
+      <p>Country: <%=@reservation_listing.country%></p>
+      <p>Zip Code: <%=@reservation_listing.zip_code%></p>
+      <p>Description: <%=@reservation_listing.description%></p>
+      <p>Home Type: <%=@reservation_listing.home_type%></p>
+      <p>Room Type: <%=@reservation_listing.room_type%></p>
+      <p>Accomodates: <%=@reservation_listing.accommodates%></p>
+      <p>Minimum stay: <%=@reservation_listing.min_stay%></p>
+      <p>Tags: <%=raw @reservation_listing.tag_list.map {|t| link_to t, tag_path(t) }.join(', ')%></p>
+      <p>Check in date: <%=x.check_in_date%></p>
+      <p>Check out date: <%=x.check_out_date%></p>
+      <div class="other-links">
+        <%= link_to t("edit"), edit_reservation_path(x)%>
+        <%= link_to t("delete"), x, method: :delete, data: {confirm:"Are you sure?"}%>
+      </div>
+      <hr>
+    <%end%>
+  <%end%>
+
+<%end%>

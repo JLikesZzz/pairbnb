@@ -1,0 +1,9 @@
+This is the edit section
+
+<%= form_for @reservation do |form| %>
+<%= render partial: '/reservations/form', object: form %>
+
+<div class="submit-field">
+  <%= form.submit %>
+</div>
+<%end%>
