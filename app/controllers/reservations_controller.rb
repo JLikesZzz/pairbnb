@@ -19,8 +19,16 @@ end
 def create
   @reservation = Reservation.new(reservation_params)
   @reservation.user_id = current_user.id
+  abc = Listing.find(params[:reservation][:listing_id])
 
+  @user_host = User.find(abc.user_id)
   if @reservation.save
+    # Tell the UserMailer to send a reservation notice after save
+        ReservationMailer.reservation_notice_email(@user_host.id, @reservation.id).deliver_now
+
+        flash[:success] = 'bit bit bit Reservation Successful'
+
+
     redirect_to @reservation
   else
     flash[:danger] = 'Date has been picked'
@@ -41,6 +49,8 @@ def update
 end
 
 def destroy
+  @reservation.destroy
+  redirect_to @reservation
 end
 
 def find_reservation

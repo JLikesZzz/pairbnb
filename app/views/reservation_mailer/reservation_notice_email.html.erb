@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Congratulation, <%= @user.first_name %> <%= @user.last_name %></h1>
+    <p>
+      Your listing have been reserved,
+      Your listing's reservation code is: <%= @reservation.id %>.<br>
+    </p>
+    <p>
+      To check your listing reservations, just follow this link: <%= @url %>.
+    </p>
+    <p>Thanks for being part of BB8nb and have a great day!</p>
+  </body>
+</html>
