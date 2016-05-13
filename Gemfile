@@ -19,6 +19,7 @@ gem "clearance"
 
 gem "figaro"
 gem 'omniauth'
+gem 'braintree', '~> 2.33.1'
 #for external service provider authentication
 gem 'omniauth-facebook'
 
