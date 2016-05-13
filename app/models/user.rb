@@ -1,9 +1,6 @@
 class User < ActiveRecord::Base
   include Clearance::User
 
-
-
-
   has_many :authentications, :dependent => :destroy
   has_many :listings, :dependent => :destroy
   has_many :reservations
@@ -30,4 +27,26 @@ class User < ActiveRecord::Base
   def password_optional?
    true
   end
+
+
+  # def get_reservations(reservation_id)
+  #   Reservation.find(reservation_id)
+  # end
+  #
+  # def reservation_total_price
+  #   total_price = 0
+  #   get_reservations.each { |reservation| total_price+= reservation.total_price }
+  #   total_price
+  # end
+  #
+  # def purchase_cart_reservations!
+  #   get_reservations.each { |reservation| purchase(reservation) }
+  # end
+  #
+  # def purchase(reservation)
+  #   reservations << reservation
+  # end
+
+
+
 end

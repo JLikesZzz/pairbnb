@@ -14,6 +14,7 @@ def show
 end
 
 def new
+  @transaction=Transaction.new
 end
 
 def create
@@ -43,10 +44,10 @@ def create
     @user_host = @reservation.listing.user
 
     # Tell the UserMailer to send a reservation notice after save
-        ReservationJob.perform_later(@user_host.id, @reservation.id)
+        # ReservationJob.perform_later(@user_host.id, @reservation.id)
 
-        flash[:success] = 'bit bit bit Reservation Successful'
-        redirect_to @reservation
+        # flash[:success] = 'bit bit bit Reservation Successful'
+        redirect_to new_reservation_transaction_path(@reservation)
   else
     flash[:danger] = 'Date has been picked'
     redirect_to(:back)

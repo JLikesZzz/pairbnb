@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160511021818) do
+ActiveRecord::Schema.define(version: 20160513075737) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20160511021818) do
     t.integer  "total_price"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.boolean  "payment_made"
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -75,6 +76,10 @@ ActiveRecord::Schema.define(version: 20160511021818) do
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
+
+  create_table "transactions", force: :cascade do |t|
+    t.integer "reservation_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.datetime "created_at",                     null: false

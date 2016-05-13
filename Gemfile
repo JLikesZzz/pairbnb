@@ -20,6 +20,8 @@ gem "clearance"
 gem "figaro"
 gem 'omniauth'
 gem 'braintree', '~> 2.33.1'
+#to pass variables from a Rails application to JavaScript
+gem 'gon', '~> 5.1.2'
 #for external service provider authentication
 gem 'omniauth-facebook'
 

@@ -1,2 +1,48 @@
 <h1>Transactions#new</h1>
 <p>Find me in app/views/transactions/new.html.erb</p>
+
+<h1>That's all</h1>
+
+
+<%= form_for [@reservation, @transaction] do |f| %>
+
+  <div class="field">
+    <%= f.label :check_in_date %><br>
+    <%= @reservation.check_in_date %><br>
+  </div>
+  <div class="field">
+    <%= f.label :check_out_date %><br>
+    <%= @reservation.check_out_date %><br>
+  </div>
+
+  <div class="field">
+    <%= f.label :total_price %><br>
+    <%= @reservation.total_price %><br>
+  </div>
+
+  <div class="field">
+    <%= f.hidden_field :reservation_id, value: @reservation.id %><br>
+  </div>
+  <div class="field">
+    <div id="dropin"></div>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>
+
+
+<script type="text/javascript">
+  function setupBT() {
+    braintree.setup("<%=@client_token%>", 'dropin', {
+      container: 'dropin'
+    });
+  }
+  if (window.addEventListener)
+    window.addEventListener("load", setupBT, false);
+  else if (window.attachEvent)
+    window.attachEvent("onload", setupBT);
+  else window.onload = setupBT;
+  </script>
+</script>
