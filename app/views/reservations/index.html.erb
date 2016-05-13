@@ -2,12 +2,13 @@
 
 <%if @reservations.count != 0%>
   <% @reservations.each do |x|%>
+
     <%if x.user_id == current_user.id%>
 
       <% @reservation_booker = User.find(x.user_id)%>
       <% @reservation_host = User.find(@reservation_listing.user_id)%>
 
-
+      <%= form_for x do |f|%>
       <a href="/reservations/<%=x.id%>"><p>RESERVATION CODE: <%=x.id%></p></a>
       <p>Name: <%=@reservation_booker.first_name%></p>
       <p>Host: <%=@reservation_host.first_name%> <%=@reservation_host.last_name%></p>
@@ -24,7 +25,9 @@
       <p>Check out date: <%=x.check_out_date%></p>
       <div class="other-links">
         <%= link_to t("edit"), edit_reservation_path(x)%>
-        <%= link_to t("delete"), x, method: :delete, data: {confirm:"Are you sure?"}%>
+
+        <%= link_to t("delete"), x, method: :delete, data: {confirm:"Are you sure?"}, remote: true%>
+        <%end%>
       </div>
       <hr>
     <%end%>

@@ -10,6 +10,8 @@ class Reservation < ActiveRecord::Base
 
   validate :uniqueness_of_data_range
 
+  def datefilter
+  end
 
   def uniqueness_of_data_range
     errors.add(:check_in_date, "is not available") unless listing.reservations.where("? >= check_in_date AND ? <= check_out_date", check_in_date, check_in_date).count == 0

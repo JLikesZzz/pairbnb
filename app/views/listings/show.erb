@@ -14,19 +14,27 @@
 <p>Price: $<%=@listing.price%></p>
 <p>Tags: <%=raw @listing.tag_list.map {|t| link_to t, tag_path(t) }.join(', ')%></p>
 
-<%if current_user.id == @host.id%>
-  <div class="other-links">
-    <%= link_to t("edit"), edit_listing_path(@listing)%>
-    <%= link_to t("delete"), @listing, method: :delete, data: {confirm:"Are you sure?"}%>
-<%else%>
-  <h5>Make a reservation now!</h5>
-  <%= form_for @reservation do |form|%>
-    <%= render partial: '/reservations/form', object: form %>
-    <%= form.hidden_field :listing_id, value: @listing.id %>
+<%if signed_in?%>
+  <%if current_user.id == @host.id%>
+    <div class="other-links">
+      <%= link_to t("edit"), edit_listing_path(@listing)%>
+      <%= link_to t("delete"), @listing, method: :delete, data: {confirm:"Are you sure?"}%>
+    <%else%>
+      <h5>Make a reservation now!</h5>
+      <%= form_for @reservation do |form|%>
 
-    <div class="submit-field">
-      <%= form.submit %>
-    </div>
+        <%= render partial: '/reservations/form', object: form %>
+        
+        <p> <strong>Total Price:</strong> <span class='book_price' id='<%=@listing.price%>' > </span> </p>
+
+        <%= form.hidden_field :listing_id, value: @listing.id %>
+
+      <div class="submit-field">
+        <%= form.submit %>
+      </div>
+    <%end%>
   <%end%>
+<%else%>
+Sign Up/Sign In now to book!
 <%end%>
 </div>

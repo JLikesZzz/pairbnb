@@ -16,3 +16,66 @@
 //= require_tree .
 
 //= require bootstrap-sprockets
+
+
+// $(function() {
+//
+//  $('input[name ="reservation[datefilter]"]').daterangepicker({
+//      autoUpdateInput: false,
+//      locale: {
+//          cancelLabel: 'Clear'
+//      }
+//
+//  });
+//
+//  $('input[name ="reservation[datefilter]"]').on('apply.daterangepicker', function(ev, picker) {
+//      $(this).val(picker.startDate.format('DD/MM/YYYY') + ' - ' + picker.endDate.format('DD/MM/YYYY'));
+//  });
+//
+//  $('input[name="reservation[datefilter]"]').on('cancel.daterangepicker', function(ev, picker) {
+//      $(this).val('');
+//  });
+//
+// });
+
+
+
+$(document).on('ready page:load', function() {
+  var startDate = moment()
+  var endDate = moment()
+  var calculatePrice = function(){
+    var price = parseInt($('.book_price').attr('id'), 10);
+    var date_diff = endDate.diff(startDate, 'days');
+    $('.book_price').html(price * date_diff);
+  }
+  calculatePrice();
+
+  $("input[name='reservation[datefilter]']").daterangepicker({
+      locale: {
+          format: 'DD/MM/YYYY',
+                  applyLabel: 'Done',
+          cancelLabel: 'Clear'
+      },
+      minDate: moment(),
+    drops: 'up',
+    autoApply: true
+    });
+
+  $("input[name='reservation[datefilter]']").on('hide.daterangepicker', function(ev, picker) {
+      startDate = picker.startDate;
+      endDate = picker.endDate;
+      calculatePrice();
+  });
+
+  $("input[name='reservation[datefilter]']").on('apply.daterangepicker', function(ev, picker) {
+      $(this).val(picker.startDate.format('DD/MM/YYYY') + ' - ' + picker.endDate.format('DD/MM/YYYY'));
+  });
+
+  $("input[name='reservation[datefilter]']").on('cancel.daterangepicker', function(ev, picker) {
+      $(this).val('');
+  });
+
+    $("select").on('change', function(){
+    calculatePrice();
+    });
+});

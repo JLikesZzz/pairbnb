@@ -17,19 +17,36 @@ def new
 end
 
 def create
-  @reservation = Reservation.new(reservation_params)
-  @reservation.user_id = current_user.id
+
+
   abc = Listing.find(params[:reservation][:listing_id])
 
-  @user_host = User.find(abc.user_id)
+
+  date = params[:reservation][:datefilter]
+   # split_date = date.scan(/\d{2}\D\d{2}\D\d{4}/)
+   split_date = date.split(' - ')
+
+   check_in = split_date[0]
+   check_out = split_date[1]
+
+   check_in_date = DateTime.parse(check_in).strftime("%d-%m-%Y")
+   check_out_date = DateTime.parse(check_out).strftime("%d-%m-%Y")
+   @reservation = Reservation.new(check_in_date: check_in_date, check_out_date: check_out_date, listing_id: params[:reservation][:listing_id], pax: params[:reservation][:pax], comments: params[:reservation][:comments])
+
+   date_diff = (@reservation.check_out_date - @reservation.check_in_date).to_i
+
+   @reservation.total_price = date_diff * @reservation.listing.price
+
+   @reservation.user_id = current_user.id
+
   if @reservation.save
+    @user_host = @reservation.listing.user
+
     # Tell the UserMailer to send a reservation notice after save
-        ReservationMailer.reservation_notice_email(@user_host.id, @reservation.id).deliver_now
+        ReservationJob.perform_later(@user_host.id, @reservation.id)
 
         flash[:success] = 'bit bit bit Reservation Successful'
-
-
-    redirect_to @reservation
+        redirect_to @reservation
   else
     flash[:danger] = 'Date has been picked'
     redirect_to(:back)
@@ -49,8 +66,15 @@ def update
 end
 
 def destroy
+
   @reservation.destroy
-  redirect_to @reservation
+
+  respond_to do |format|
+    format.html { redirect_to @reservation }
+    format.js
+  end
+
+
 end
 
 def find_reservation

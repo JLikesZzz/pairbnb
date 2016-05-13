@@ -17,6 +17,7 @@
     <p>Room Type: <%=x.room_type%></p>
     <p>Accomodates: <%=x.accommodates%></p>
     <p>Minimum stay: <%=x.min_stay%></p>
+    <p>Price per night: <%=x.price%></p>
     <p>Tags: <%=raw x.tag_list.map {|t| link_to t, tag_path(t) }.join(', ')%></p>
     <div class="other-links">
       <%= link_to t("edit"), edit_listing_path(x)%>

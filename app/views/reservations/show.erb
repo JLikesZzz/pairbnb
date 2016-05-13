@@ -16,6 +16,7 @@
   <p>Accomodates: <%=@reservation_listing.accommodates%></p>
   <p>Minimum stay: <%=@reservation_listing.min_stay%></p>
   <p>Tags: <%=raw @reservation_listing.tag_list.map {|t| link_to t, tag_path(t) }.join(', ')%></p>
+  <p>Total Price: <%=@reservation.total_price%></p>
   <div class="other-links">
     <%= link_to t("edit"), edit_reservation_path(@reservation)%>
     <%= link_to t("delete"), @reservation, method: :delete, data: {confirm:"Are you sure?"}%>

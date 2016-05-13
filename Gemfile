@@ -25,6 +25,9 @@ gem 'omniauth-facebook'
 #for tagging
 gem 'acts-as-taggable-on'
 
+#allows app server to push a task into a queue that a background worker processes.
+gem "sidekiq"
+
 #for simple and extremely flexible way to upload files from Ruby applications, allows image uploads
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave' #, '~> 0.10'
 
